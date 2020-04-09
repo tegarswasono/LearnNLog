@@ -23,5 +23,18 @@ namespace LearnNLog.Controllers
             _logger.Info("HomeController.Get");
             return new string[] { "value1", "value2" };
         }
+        [HttpGet("Insert")]
+        public ActionResult<IEnumerable<string>> Insert()
+        {
+            try
+            {
+                throw new Exception();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("HomeController.Insert | Something went wrong: " + ex.ToString());
+                return BadRequest(ex.ToString());
+            }
+        }
     }
 }
